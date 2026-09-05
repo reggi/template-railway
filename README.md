@@ -76,9 +76,11 @@ minimum compatible public `knitto` npm version required by that template:
 ```
 
 Conductor dispatches the update workflow with the new immutable tag. The
-workflow first runs `knitto source pin --ref <tag>` with the currently pinned
-engine, then runs `knitto apply --update` with the newly required engine.
-Reverting that pull request restores the prior template and engine pins.
+workflow delegates checkout preparation to `knitto-gh update`, the same
+operation used by local fallback propagation. It selects the release when
+needed, runs `knitto@latest apply --update`, refreshes package state, runs
+quality checks, and writes exact PR provenance. Reverting that pull request
+restores the prior template and engine pins.
 
 Templates that do not want release tags can omit the `release` block and keep
 using a branch ref exactly as before.
@@ -133,10 +135,14 @@ fix; only deterministic Prettier and `sort-package-json` changes are committed
 automatically.
 
 The **Update repository template** workflow can be started from the Actions
-tab. It builds Knitto from `reggi/knitto`, runs
-`apply --update`, refreshes `package-lock.json` when needed, and opens or
-updates a pull request. Both pull-request-producing workflows require GitHub
-Actions to be allowed to create pull requests in the repository settings.
+tab. It runs `knitto-gh@latest update`, then uses the resulting provenance to
+open or update a pull request. Both pull-request-producing workflows require
+GitHub Actions to be allowed to create pull requests in the repository
+settings.
+
+The root `.github/workflows/update-template.yml` file is the source of truth
+for this managed workflow. Its Knitto rule uses a literal repository `source`,
+so there is no duplicate `.yml.hbs` copy to keep synchronized.
 
 The optional `set` workflow input accepts a JSON object whose keys are
 Knitto input paths and whose values are strings, numbers, or
