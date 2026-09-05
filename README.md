@@ -57,8 +57,8 @@ configured `v{version}` tag.
 
 Before the first release, Release Please's `0.0.0` bootstrap version is not a
 real tag. Consumers use `main` during this bootstrap period. After the first
-release, their generated `.knitto.json` pins the exact release tag and the exact
-public `knitto` npm version required by that template:
+release, their generated `.knitto.json` pins the exact release tag and the
+minimum compatible public `knitto` npm version required by that template:
 
 ```json
 {
