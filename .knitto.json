@@ -1,0 +1,10 @@
+{
+  "source": {
+    "type": "local",
+    "path": ".knitto"
+  },
+  "engine": {
+    "package": "knitto",
+    "version": "1.0.0-rc.1"
+  }
+}
