@@ -2,10 +2,9 @@
 
 ## [0.1.0](https://github.com/reggi/template-railway/compare/v0.0.1...v0.1.0) (2026-09-05)
 
-
 ### Features
 
-* centralize template updates in knitto-gh ([787af06](https://github.com/reggi/template-railway/commit/787af06e87893920e267ce20bf6b7fcb6204d5a9))
+- centralize template updates in knitto-gh ([787af06](https://github.com/reggi/template-railway/commit/787af06e87893920e267ce20bf6b7fcb6204d5a9))
 
 ## 0.0.1 (2026-09-05)
 
