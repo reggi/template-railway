@@ -140,10 +140,10 @@ open or update a pull request. Both pull-request-producing workflows require
 GitHub Actions to be allowed to create pull requests in the repository
 settings.
 
-The root `.github/workflows/update-template.yml` and `.gitignore` files are
-literal sources of truth for their managed copies. Their Knitto rules use
-repository `source` files, so formatter-sensitive Handlebars duplicates are
-not required.
+The root `.github/workflows/update-template.yml`, `.gitignore`, and
+`tsconfig.json` files are literal sources of truth for their managed copies.
+Their Knitto rules use repository `source` files, so formatter-sensitive
+Handlebars duplicates are not required.
 
 The optional `set` workflow input accepts a JSON object whose keys are
 Knitto input paths and whose values are strings, numbers, or

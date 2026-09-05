@@ -58,7 +58,7 @@
     {
       "id": "typescript-standards",
       "type": "file",
-      "template": "files/tsconfig.json.hbs",
+      "source": "tsconfig.json",
       "destination": "tsconfig.json"
     },
     {
