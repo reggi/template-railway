@@ -7,7 +7,7 @@
   },
   "release": {
     "provider": "release-please",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "tagFormat": "v{version}"
   },
   "conductor": {
@@ -16,7 +16,10 @@
       "refInput": "ref"
     }
   },
-  "inputs": [".gitignore", "package.json"],
+  "inputs": [
+    ".gitignore",
+    "package.json"
+  ],
   "prompts": [
     {
       "path": "metadata.name",
@@ -47,7 +50,9 @@
       "parser": "package-json",
       "template": "files/package.json.hbs",
       "destination": "package.json",
-      "exact": [""],
+      "exact": [
+        ""
+      ],
       "when": "{{#unless (eq project.name \"template-railway\")}}true{{/unless}}"
     },
     {
@@ -80,7 +85,10 @@
       "parser": "json-merge",
       "template": "files/knitto.json.hbs",
       "destination": ".knitto.json",
-      "exact": ["/source", "/engine"],
+      "exact": [
+        "/source",
+        "/engine"
+      ],
       "when": "{{#unless (eq project.name \"template-railway\")}}true{{/unless}}"
     },
     {
