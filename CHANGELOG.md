@@ -2,10 +2,9 @@
 
 ## [0.1.1](https://github.com/reggi/template-railway/compare/v0.1.0...v0.1.1) (2026-09-05)
 
-
 ### Bug Fixes
 
-* preserve gitignore line entries ([8b10d9d](https://github.com/reggi/template-railway/commit/8b10d9d56204402ec6b886830f2ab743201d1d5f))
+- preserve gitignore line entries ([8b10d9d](https://github.com/reggi/template-railway/commit/8b10d9d56204402ec6b886830f2ab743201d1d5f))
 
 ## [0.1.0](https://github.com/reggi/template-railway/compare/v0.0.1...v0.1.0) (2026-09-05)
 
