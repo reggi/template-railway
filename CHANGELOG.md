@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/reggi/template-railway/compare/v0.1.2...v0.2.0) (2026-09-05)
+
+
+### Features
+
+* configure canonical template source ([4ba7e53](https://github.com/reggi/template-railway/commit/4ba7e5325594c9afbd09178cacb828c49dc8a373))
+
 ## [0.1.2](https://github.com/reggi/template-railway/compare/v0.1.1...v0.1.2) (2026-09-05)
 
 
