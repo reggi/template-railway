@@ -55,9 +55,10 @@ continues on `main`; the Release Please pull request updates `package.json`,
 `.knitto/template.json`. Merging that pull request creates the template's
 configured `v{version}` tag.
 
-Consumers do not follow `main` after onboarding. Their generated `.knitto.json`
-pins the exact release tag and the exact public `knitto` npm version required by
-that template:
+Before the first release, Release Please's `0.0.0` bootstrap version is not a
+real tag. Consumers use `main` during this bootstrap period. After the first
+release, their generated `.knitto.json` pins the exact release tag and the exact
+public `knitto` npm version required by that template:
 
 ```json
 {
@@ -65,11 +66,11 @@ that template:
     "type": "git",
     "url": "https://github.com/reggi/template-railway.git",
     "path": ".knitto",
-    "ref": "v1.0.0"
+    "ref": "v0.0.1"
   },
   "engine": {
     "package": "knitto",
-    "version": "1.0.0"
+    "version": "0.0.1"
   }
 }
 ```

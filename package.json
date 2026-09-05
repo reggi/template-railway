@@ -14,7 +14,6 @@
     "test:quality": "npm run format:check && npm run package:check && npm run typecheck",
     "typecheck": "tsc --noEmit"
   },
-  "prettier": "@github/prettier-config",
   "devDependencies": {
     "@github/prettier-config": "0.0.6",
     "@types/node": "26.4.1",
