@@ -75,15 +75,6 @@
       "destination": ".github/workflows/update-template.yml"
     },
     {
-      "id": "configure-remote-template-source",
-      "type": "content",
-      "parser": "json-merge",
-      "template": "files/knitto.json.hbs",
-      "destination": ".knitto.json",
-      "exact": ["/source", "/engine"],
-      "when": "{{#unless (eq project.name \"template-railway\")}}true{{/unless}}"
-    },
-    {
       "id": "remove-railway-readme",
       "type": "delete",
       "destination": ".railway/README.md"

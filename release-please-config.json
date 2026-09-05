@@ -12,6 +12,11 @@
           "type": "json",
           "path": ".knitto/template.json",
           "jsonpath": "$.release.version"
+        },
+        {
+          "type": "json",
+          "path": ".knitto.json",
+          "jsonpath": "$.source.ref"
         }
       ]
     }

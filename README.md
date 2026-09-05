@@ -22,21 +22,9 @@ consistent across Railway repositories. The Railway resource graph itself is
 seeded from this repository but becomes project-owned because each application
 has different services, databases, buckets, volumes, and variables.
 
-GitHub copies `.knitto` into repositories created from this template so
-the complete starter state remains inspectable. The copied
-`.knitto.json` initially uses that local embedded source.
-Template-defined required inputs collect the generated repository's package
-name and description whenever the selected template revision needs them.
-Node.js support remains shared policy and is fixed at version 22 or newer.
-After those values exist, the first plan rewrites `.knitto.json` to the
-canonical Git source and removes the embedded `.knitto` copy. The
-`template-railway` parent repository is explicitly excluded from its identity
-prompts, package reconciliation, source rewrite, and embedded-template
-deletion, so `knitto plan --update` can update the template itself
-without changing the starter state copied to children.
+GitHub copies `.knitto` into repositories created from this template so the complete starter state remains inspectable. The committed `.knitto.json` already points to the canonical Git source, but Knitto gives an embedded `.knitto` directory precedence while it exists. Template-defined required inputs collect the generated repository's package name and description whenever the selected template revision needs them. Node.js support remains shared policy and is fixed at version 22 or newer. After those values exist, the first apply removes the embedded `.knitto` copy. Later runs automatically use the Git source already recorded in `.knitto.json`. The `template-railway` parent repository is explicitly excluded from its identity prompts, package reconciliation, and embedded-template deletion, so `knitto plan --update` can update the template itself without changing the starter state copied to children.
 
-The parent still dogfoods its own policy. Its root `.knitto.json` points to the
-embedded `.knitto` source, and the template is ready to propagate only when:
+The parent still dogfoods its own policy because its embedded `.knitto` directory shadows the configured Git source. The template is ready to propagate only when:
 
 ```bash
 knitto check --update
@@ -49,11 +37,7 @@ the template parent and every generated consumer.
 
 ## Releases
 
-This template opts into immutable releases through Release Please. Development
-continues on `main`; the Release Please pull request updates `package.json`,
-`package-lock.json`, `.release-please-manifest.json`, and
-`.knitto/template.json`. Merging that pull request creates the template's
-configured `v{version}` tag.
+This template opts into immutable releases through Release Please. Development continues on `main`; the Release Please pull request updates `package.json`, `package-lock.json`, `.release-please-manifest.json`, `.knitto/template.json`, and the Git ref in `.knitto.json`. Merging that pull request creates the template's configured `v{version}` tag.
 
 Before the first release, Release Please's `0.0.0` bootstrap version is not a
 real tag. Consumers use `main` during this bootstrap period. After the first
@@ -99,16 +83,7 @@ knitto plan
 knitto apply
 ```
 
-The plan detects that `metadata.name` and `metadata.description` are missing,
-prompts with any template-configured defaults, saves the answers to
-`.knitto.json`, and then shows
-the enforced `package.json` changes. `.railway/railway.ts` reads the resulting
-explicit package name rather than deriving identity from `process.cwd()`. The
-first apply switches the project source to
-`https://github.com/reggi/template-railway.git`, removes the copied
-`.knitto` directory, and creates the lock. Later template revisions may
-introduce additional required inputs; the next `plan --update` resolves them in
-the same way. The project-owned `.railway/railway.ts` starter is not replaced.
+The plan detects that `metadata.name` and `metadata.description` are missing, prompts with any template-configured defaults, saves the answers to `.knitto.json`, and then shows the enforced `package.json` changes. `.railway/railway.ts` reads the resulting explicit package name rather than deriving identity from `process.cwd()`. The first apply removes the copied `.knitto` directory and creates the lock. Later runs use the configured `https://github.com/reggi/template-railway.git` source. Later template revisions may introduce additional required inputs; the next `plan --update` resolves them in the same way. The project-owned `.railway/railway.ts` starter is not replaced.
 
 Automation can inspect the template requirements without triggering prompts:
 
